@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Tracker</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            width: 380px;
+            height: 380px;
+            margin: 0;  
+        }
+        header {
+            background-color: #4B70F5;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+            border-radius: 10px;
+            top:0
+        }
+        .card {
+            background-color: rgb(249, 249, 249);
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight:normal;
+            margin-right: 10px;
+            color: #023a72;
+        }
+        input[type="text"], input[type="number"] {
+            width: 60%;
+            padding: 10px;
+            border: 1px solid #8d8d8d;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #127ce6;
+            color: white;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 30%;
+            margin-bottom: 20px;
+        }
+        button:disabled {
+            background-color: #d0e2fd;
+            cursor: not-allowed;
+        }
+        .status-bar {
+            width: 100%;
+            height: 28px;
+            background-color: #cfe2ff;
+            border-radius: 5px;
+            margin: 10px 0;
+            position: relative;
+        }
+        .status-bar-fill {
+            height: 100%;
+            width: 0;
+            background-color: #78acfb;
+            border-radius: 5px;
+            transition: width 0.3s;
+        }
+        .status-text {
+            text-align: center;
+            margin-top: 8px;
+            font-weight: bold;
+            color: #003366;
+        }
+        .total-time-output {
+            font-size: 16px;
+            margin-top: 10px;
+            font-weight: normal;
+            color: #003366;
+        }
+        a {
+            
+           text-decoration: none;
+            font-weight: normal;
+            display: flex;
+            text-align: center;
+            margin-bottom: 20px;
+           padding: 8px;
+            border-radius: 5px;
+            border: none;
+            background-color: #127ce6;
+            color: white;
+            font-size: 10px;
+            cursor: pointer;
+            margin-top: 8px;
+            width: 20%;
+            margin-bottom: 20px;
+
+        }
+   
+       
+    </style>
+</head>
+<body>
+<header style="background-color: #127ce6;"><h1>Time Tracker</h1></header>
+    
+
+    
+    <div class="card">
+
+        <a href="report.html">Weekly Report</a>
+
+        <div class="input-group">
+            <label for="ticket-number">Ticket Number:</label>
+            <input type="text" id="ticket-number">
+            <label for="time-minutes">Time (minutes):</label>
+            <input type="number" id="time-minutes">
+        </div>
+        <div>
+            <button id="add-time">Add Time</button>
+            <button id="clear-time">Clear</button>
+        </div>
+       
+        <div class="total-time-output" id="total-time">Total Time: 0 minutes</div>
+        <div class="status-bar">
+            <div class="status-bar-fill" id="status-bar-fill"></div>
+        </div>
+        <div class="status-text" id="status-text">Status: Low</div>
+     
+    </div>
+   
+
+    <script src="script.js"></script>
+</body>
+</html>

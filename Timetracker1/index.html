@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Tracker</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <header>
+        <h1>Time Tracker</h1>
+        <button id="weeklyReportButton">Weekly Report</button>
+    </header>
+    <main>
+        <div class="card">
+            <section>
+                <button id="trackTime">Track Your Weekly Time</button>
+                <input type="number" id="addNumberInput">
+                <button id="addButton">Add</button>
+                <button id="clearButton">Clear</button>
+                <h3 id="totalOutput">Total: 0</h3>
+                <div id="statusBar">
+                    <div id="statusFill" class="statusPartition"></div>
+                </div>
+                <p id="statusLabel">Status: Low</p>
+            </section>
+            <section id="weeklySection" >
+                <h4>Weekly Time Report</h4>
+                <canvas id="weeklyChart"></canvas>
+            </section>
+            <section>
+                <h4>To-Do List</h4>
+                <input type="text" id="newTask" placeholder="Enter a new task" />
+                <ul id="taskList"></ul>
+            </section>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

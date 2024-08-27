@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Time Tracker</h1>
+        
+    </header>
+    <main>
+        <div class="card">
+            <section>
+                <h2>Add to Total</h2>
+                <label for="addNumberInput">Enter Number:</label>
+                <input type="number" id="addNumberInput">
+                <button id="addButton">Add</button>
+                <button id="clearButton">Clear</button>
+                <p id="totalOutput">Total: 0</p>
+                <div id="statusBar">
+                    <div id="statusFill" class="statusPartition"></div>
+                </div>
+                <p id="statusLabel">Status: Low</p>
+            </section>
+            <section>
+                <h2>Operations</h2>
+                <div class="operation-container">
+                    <input type="number" id="number1" class="operation-input" placeholder="Number 1">
+                    <input type="number" id="number2" class="operation-input" placeholder="Number 2">
+                </div>
+                <div class="operation-buttons">
+                    <button id="addOperation">Add</button>
+                    <button id="subtractOperation">Subtract</button>
+                    <button id="multiplyOperation">Multiply</button>
+                    <button id="divideOperation">Divide</button>
+                </div>
+                <p id="operationResult">Result: 0</p>
+
+                <a href="weekly.html" id="trackTime">Track Your Weekely Time</a> <!-- Add this line -->
+            </section>
+        </div>
+    </main>
+   
+    <script src="script.js"></script>
+</body>
+</html>

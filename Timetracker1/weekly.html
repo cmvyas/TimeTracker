@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Data</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" id="backToHome">&#8592;</a>
+        <h1>Weekly Data</h1>
+    </header>
+
+   
+    <main>
+      
+        <div class="container">
+            
+            <div class="card chart-card">
+                <h2>Weekly Total</h2>
+                <canvas id="weeklyChart" width="400" height="200"></canvas>
+            </div>
+            <div id="summaryContainer" class="card summary-card">
+                <h2>Weekly Summary</h2>
+                <p id="totalTime">Total Time for the Week: 0</p>
+                <p id="targetComparison">Target: 2100</p>
+                <p id="status">Status: Below Target</p>
+            </div>
+        </div>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const ctx = document.getElementById('weeklyChart').getContext('2d');
+            const weeklyData = JSON.parse(localStorage.getItem('weeklyData')) || {};
+
+            // Default data for 7 days
+            const dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+            const data = dayNames.map(day => weeklyData[day] || 0);
+
+            // Create the chart
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: dayNames,
+                    datasets: [{
+                        label: 'Daily Total',
+                        data: data,
+                        borderColor: '#536493',
+                        backgroundColor: 'rgba(83, 109, 254, 0.2)',
+                        borderWidth: 2,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            beginAtZero: true
+                        },
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Calculate total time for the week
+            const totalTime = data.reduce((acc, curr) => acc + curr, 0);
+            const totalTimeElement = document.getElementById('totalTime');
+            const targetComparisonElement = document.getElementById('targetComparison');
+            const statusElement = document.getElementById('status');
+            
+            totalTimeElement.textContent = `Total Time for the Week: ${totalTime}`;
+            targetComparisonElement.textContent = `Target: 2100`;
+
+            // Update status
+            const target = 2100;
+            if (totalTime >= target) {
+                statusElement.textContent = 'Status: Achieved Target';
+            } else {
+                statusElement.textContent = 'Status: Below Target';
+            }
+        });
+    </script>
+    
+</body>
+</html>

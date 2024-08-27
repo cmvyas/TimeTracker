@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Report</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            width: 380px;
+            height: 380px;
+            margin: 0;  
+        }
+        header {
+            background-color: #4B70F5;
+            color: white;
+            padding: 8px;
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+            border-radius: 8px;
+        }
+        #report {
+            padding: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #4B70F5;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            font-size: 12px;
+        }
+        th {
+            background-color: #127ce6;
+            color: white;
+        }
+        button {
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+            background-color: #127ce6;
+            color: white;
+            font-size: 8px;
+            cursor: pointer;
+            margin-top: 0px;
+            width: 20%;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        a {
+            text-decoration: none;
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+            background-color: #127ce6;
+            color: white;
+            font-size: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 20%;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        #bottom {
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+        }
+        .total-time-summary {
+            font-weight: normal;
+            color: #023a72;
+        }
+    </style>
+</head>
+<body>
+    <header> <h1>Weekly Report</h1></header>
+
+    <div id="report">
+        <a href="index.html">Back</a>
+        <br><br>
+        <table id="report-table">
+            <thead>
+                <tr>
+                    <th>Ticket Number</th>
+                    <th>Time (minutes)</th>
+                    <th>Weekday & Date</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div id="bottom">
+        <div class="total-time-summary" id="total-time-summary"></div>
+        <button id="download-report">Download</button>  
+    </div>
+   
+    <script src="report.js"></script>
+</body>
+</html>
