@@ -70,12 +70,16 @@
         }
         #bottom {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             margin: 10px;
+        }
+        #bottom>button{
+            margin:4px;
         }
         .total-time-summary {
             font-weight: normal;
             color: #023a72;
+            margin-left:14px;
         }
     </style>
 </head>
@@ -96,9 +100,11 @@
             <tbody></tbody>
         </table>
     </div>
+    <div class="total-time-summary" id="total-time-summary"></div>
     <div id="bottom">
-        <div class="total-time-summary" id="total-time-summary"></div>
-        <button id="download-report">Download</button>  
+        
+        <button id="download-report">Download</button>
+        <button id="clear-report">Clear Report</button>  
     </div>
    
     <script src="report.js"></script>
