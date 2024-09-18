@@ -1,8 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   const reportTableBody = document.querySelector("#report-table tbody");
-  const tickets = JSON.parse(localStorage.getItem("tickets")) || [];
+  const totalTimeSummary = document.getElementById("total-time-summary");
+  const downloadButton = document.getElementById("download-report");
+  const clearReportButton = document.getElementById("clear-report"); // New button reference
+  let tickets = JSON.parse(localStorage.getItem("tickets")) || [];
   const dayWiseTotal = {};
 
+  // Populate the report table and total time summary
   tickets.forEach((entry) => {
     const row = document.createElement("tr");
     const ticketCell = document.createElement("td");
@@ -25,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
     dayWiseTotal[entry.weekday] += entry.time;
   });
 
-  const totalTimeSummary = document.getElementById("total-time-summary");
   totalTimeSummary.innerHTML = "";
   for (const day in dayWiseTotal) {
     const p = document.createElement("p");
@@ -33,8 +36,22 @@ document.addEventListener("DOMContentLoaded", () => {
     totalTimeSummary.appendChild(p);
   }
 
-  const downloadButton = document.getElementById("download-report");
+  // Clear report button functionality
+  clearReportButton.addEventListener("click", () => {
+    // Clear tickets from local storage
+    localStorage.removeItem("tickets");
 
+    // Clear the report table
+    reportTableBody.innerHTML = "";
+
+    // Clear the total time summary UI
+    totalTimeSummary.innerHTML = "";
+
+    // Optionally, also reset the totalMinutes
+    localStorage.setItem("totalMinutes", JSON.stringify(0));
+  });
+
+  // Download report functionality
   downloadButton.addEventListener("click", () => {
     const csvContent =
       "data:text/csv;charset=utf-8," +

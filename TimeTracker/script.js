@@ -10,6 +10,16 @@ document.addEventListener("DOMContentLoaded", () => {
   let totalMinutes = JSON.parse(localStorage.getItem("totalMinutes")) || 0;
   let tickets = JSON.parse(localStorage.getItem("tickets")) || [];
 
+  const savedDate = localStorage.getItem("savedDate");
+  const currentDate = new Date().toLocaleDateString();
+
+  // Check if the date has changed to reset totalMinutes
+  if (savedDate !== currentDate) {
+    totalMinutes = 0;
+    localStorage.setItem("totalMinutes", JSON.stringify(totalMinutes));
+    localStorage.setItem("savedDate", currentDate);
+  }
+
   const updateUI = () => {
     totalTimeDisplay.textContent = `Total Time: ${totalMinutes} minutes`;
     let status = "Low";
@@ -46,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       localStorage.setItem("tickets", JSON.stringify(tickets));
       localStorage.setItem("totalMinutes", JSON.stringify(totalMinutes));
+      localStorage.setItem("savedDate", currentDate); // Update saved date
 
       ticketInput.value = "";
       timeInput.value = "";
@@ -55,11 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   clearButton.addEventListener("click", () => {
     totalMinutes = 0;
-    tickets = [];
-
-    localStorage.setItem("tickets", JSON.stringify(tickets));
-    localStorage.setItem("totalMinutes", JSON.stringify(totalMinutes));
-
+    localStorage.setItem("totalMinutes", JSON.stringify(totalMinutes)); // Clear only the total minutes
     updateUI();
   });
 
